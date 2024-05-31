@@ -1,0 +1,77 @@
+import java.util.Scanner;
+class node
+{
+	int data;
+	node next;
+	node(int data)
+	{
+		this.data=data;
+		this.next=null;
+	}
+}
+class myDynamicQueue
+{
+	node front=null;
+	node rear=null;
+	public void ENQUEUE()
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter the data of the element");
+		int x=sc.nextInt();
+		node p=new node(x);
+		if(front==null|| rear==null)// CORNER CASE:WHEN THE QUEUE IS TOTTALY EMPTY AND YOU ARE GOING TO ENQUEUE  THE FIRST  ELEMENT IN THE QUEUE,SO AT THIS TIME FRONT AND REAR WILL POINT TO THE NODE/ELEMENT. 
+		{
+			front=p;
+			rear=p;
+		}
+		else
+		{
+			rear.next=p;
+			rear=p;
+			
+		}
+
+			
+			
+		
+	}
+	public void DEQUEUE()
+	{
+		if(front==null)
+		{
+			System.out.println("QUEUE UNDERFLOW");
+		}
+		else
+		{
+			front=front.next;
+			if(front==null)//CORNER CASE
+			{
+				rear=null;
+			}
+		}
+		
+	}
+	public  void display()
+	{
+		System.out.println("THE QUEUE AFTER PERFORMING ALL THE OPERATIONS ");
+		while(front!=null)
+		{
+			System.out.println(front.data);
+			front=front.next;
+		}
+		
+	}
+}
+public class IMPLEMENTATION_OF_QUEUE_USING_LINKEDLIST 
+{
+	public static void main(String[] args) 
+	{
+		myDynamicQueue dq=new myDynamicQueue();
+		dq.ENQUEUE();
+		dq.ENQUEUE();
+		dq.ENQUEUE();
+		dq.DEQUEUE();
+		dq.display();
+	}
+
+}
